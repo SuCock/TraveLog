@@ -166,7 +166,7 @@ public class DB {
 	// end 찬우
 	
 	// 현욱
-	public void select() {
+	public void listSelect() {
 		System.out.println("DB조회");
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
@@ -192,16 +192,21 @@ public class DB {
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM board WHERE board_category = ?");
-			pstmt.setString(1, cate);
+			pstmt.setString(1,cate);
 			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
 			
-			while(rs.next()) {
-				System.out.print("[게시판번호:" + rs.getInt("board_no") + "] ");
-				System.out.print("카테고리:" + rs.getString("board_category") + " ");
-				System.out.print("작성자:" + rs.getString("board_writer") + " ");
-				System.out.print("제목:" + rs.getString("board_title") + " ");
-				System.out.println();
-			}
+			if (!rs.isBeforeFirst()) {
+		        // rs.isBeforeFirst() 결과 집합에 데이터가 있는지 여부를 확인
+		        System.out.println("조회되는 내용이 없습니다. 카테고리를 다시 입력 해주세요");
+		    } else {
+				while(rs.next()) {
+					System.out.print("[게시판번호:" + rs.getInt("board_no") + "] ");
+					System.out.print("카테고리:" + rs.getString("board_category") + " ");
+					System.out.print("작성자:" + rs.getString("board_writer") + " ");
+					System.out.print("제목:" + rs.getString("board_title") + " ");
+					System.out.println();
+				}
+		    }
 			System.out.println("조회완료");
 		}catch (Exception e) {
 			e.printStackTrace();
