@@ -98,17 +98,22 @@ public class DB {
 	// end 수민
 	
 	// 찬우
-	public void insert(String board) {
-		System.out.println("DB에 할일 입력하기");
+	public void insert(String board_category, String board_writer,String board_title, String board_contents) {
+		System.out.println("게시물이 등록되었습니다");
 		// 예외 처리
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 
-			PreparedStatement pstmt = con.prepareStatement(
-					"INSERT INTO  " + "(`board_category`,`board_writer`,`board_date`,`board_title`,`board_contents`)"
-							+ "VALUES " + "(?,?,?,?,?)");
-			pstmt.setString(1, board); // 첫번째 ?에 넣어준다.
-			System.out.println("입력완료");
+			PreparedStatement pstmt = con.prepareStatement("INSERT INTO board" + 
+														"(`board_category`,`board_writer`,`board_title`,`board_contents`)"+ 
+														"VALUES " + 
+														"(?,?,?,?)");
+			pstmt.setString(1, board_category); // 첫번째 ?에 넣어준다.
+			pstmt.setString(2, board_writer); // 두번째 ?에 넣어준다.
+			pstmt.setString(3, board_title); // n번째 ?에 넣어준다.
+			pstmt.setString(4, board_contents); // n번째 ?에 넣어준다.
+//			pstmt.setString(5, board); // n번째 ?에 넣어준다.
+
 			pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
 		} catch (Exception e) {
 		}
