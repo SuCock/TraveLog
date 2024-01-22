@@ -17,7 +17,7 @@ public class BoardUpdate {
 
 			if (board.equals("1")) {
 				System.out.println("게시글 번호 입력 > ");
-				db.select(board);
+				db.updateSelect(board);
 			} else if (board.equals("2")) {
 				System.out.println("게시글 제목 > ");
 				String input = sc.nextLine();
@@ -28,7 +28,7 @@ public class BoardUpdate {
 				System.out.println("게시글 번호 > ");
 				input = sc.nextLine();
 				db.update(board); // 게시글 번호
-				db.select(board);
+				db.updateSelect(board);
 			} else {
 				System.out.println("종료합니다.");
 				break;
