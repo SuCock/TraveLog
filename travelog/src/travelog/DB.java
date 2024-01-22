@@ -6,7 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DB {
-	public void select(String board) { // 조회문
+	// 수민
+	public void updateSelect(String board) { // 수정전의 조회문
 		System.out.println("");
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
@@ -44,23 +45,116 @@ public class DB {
 		} catch (Exception e) {
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// end 수민
+	
+	// 찬우
+	public void insert(String board) {
+		System.out.println("DB에 할일 입력하기");
+		// 예외 처리
+		try {
+			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 
-//	public void insert(String todo) {
-//		System.out.println("DB에 할일 입력하기");
-//		// 예외 처리
-//		try {
-//			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
-//			PreparedStatement pstmt = con.prepareStatement("INSERT INTO todo "
-//														 + "(`할일`,`상태`)"
-//														 + "VALUES "
-//														 + "(?,'준비')");
-//			pstmt.setString(1, todo); // 첫번째 ?에 넣어준다.
-//			System.out.println("입력완료");
-//			pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+			PreparedStatement pstmt = con.prepareStatement(
+					"INSERT INTO  " + "(`board_category`,`board_writer`,`board_date`,`board_title`,`board_contents`)"
+							+ "VALUES " + "(?,?,?,?,?)");
+			pstmt.setString(1, board); // 첫번째 ?에 넣어준다.
+			System.out.println("입력완료");
+			pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
+		} catch (Exception e) {
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// end 찬우
+	
+	// 현욱
 	public void select() {
 		System.out.println("DB조회");
 		try {
@@ -81,23 +175,7 @@ public class DB {
 		}
 
 	}
-
-	public void insert(String board) {
-		System.out.println("DB에 할일 입력하기");
-		// 예외 처리
-		try {
-			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
-
-			PreparedStatement pstmt = con.prepareStatement(
-					"INSERT INTO  " + "(`board_category`,`board_writer`,`board_date`,`board_title`,`board_contents`)"
-							+ "VALUES " + "(?,?,?,?,?)");
-			pstmt.setString(1, board); // 첫번째 ?에 넣어준다.
-			System.out.println("입력완료");
-			pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
-		} catch (Exception e) {
-		}
-	}
-
+	
 	public void cateSelect(String cate) {
 		System.out.println("CATEGORY SELECT 조회");
 		try {
@@ -118,4 +196,121 @@ public class DB {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// end 현욱
+	
+	// 상의
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// end 상의
 }
