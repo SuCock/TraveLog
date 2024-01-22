@@ -7,14 +7,13 @@ import java.sql.ResultSet;
 
 public class DB {
 	// 수민
-	public void updateSelect(String board) { // 수정전의 조회문
-		System.out.println("");
+	public void updateSelect(int board) { // 수정전의 조회문(단건조회임으로 완성되면 사라질 예정)
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 			PreparedStatement pstmt = con.prepareStatement("SELECT board_category\r\n" + "	 , board_writer\r\n"
 					+ "	 , board_date\r\n" + "	 , board_title\r\n" + "	 , board_contents\r\n" + "  FROM board\r\n"
 					+ " WHERE board_no = ?");
-			pstmt.setString(1, board); // 첫번째 ?에 넣어준다. -> 조건을 먼저 넣고 실행해야한다.
+			pstmt.setInt(1, board); // 첫번째 ?에 넣어준다. -> 조건을 먼저 넣고 실행해야한다.
 			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
 			if (rs.next()) { // 데이터가 있는 경우에만 진행
 				System.out.println("╔══════" + rs.getString("board_title") + "═╗");
@@ -29,21 +28,28 @@ public class DB {
 		}
 	}
 
-	public void update(String board) { // 수정문
-		System.out.println("DB에 할일 입력하기");
+	public void update(String title, String content, int boardNo ) { // 수정문
 		// 예외 처리
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 
-			PreparedStatement pstmt = con.prepareStatement("UPDATE travelog\r\n" + "SET board_title = '?'\r\n"
-					+ "  , board_contnets = '?'\r\n" + "WHERE board_no = '?';");
-			pstmt.setString(1, board); // 첫번째 ?에 넣어준다.
-			pstmt.setString(2, board); // 두번째 ?에 넣어준다.
-			pstmt.setString(3, board); // 세번째 ?에 넣어준다.
-			System.out.println("입력완료");
-			pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
+			PreparedStatement pstmt = con.prepareStatement("UPDATE board SET board_title = ?, board_contents = ? WHERE board_no = ?");
+			pstmt.setString(1, title); // 게시판 제목 
+			pstmt.setString(2, content); // 게시판 내용
+			pstmt.setInt(3, boardNo); // 게시판 번호
+			
+			int result = pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
+			
+			if(result > 0 ) {
+				System.out.println("수정완료");
+				
+			} else {
+				System.err.println("수정실패");
+			}
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		
 	}
 	
 	

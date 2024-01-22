@@ -8,27 +8,20 @@ public class BoardUpdate {
 		DB db = new DB();
 		
 		while (true) {
-			System.out.println("1. 게시글 단건 조회");
-			System.out.println("2. 게시글 수정");
-			System.out.println("3. 종료");
+			int boardNo = 1; // 단건조회에서 가져올 데이터(수정할 게시판 번호)
+			db.updateSelect(boardNo); // 단건조회
+			System.out.println("1. 게시글 수정");
+			System.out.println("2. 종료");
 			System.out.println("번호 입력하세요 > ");
 
-			String board = sc.nextLine();
-
-			if (board.equals("1")) {
-				System.out.println("게시글 번호 입력 > ");
-				db.updateSelect(board);
-			} else if (board.equals("2")) {
+			String number = sc.nextLine();
+			if (number.equals("1")) {
 				System.out.println("게시글 제목 > ");
-				String input = sc.nextLine();
-				db.update(board); // 제목
+				String title = sc.nextLine(); // 제목 작성
 				System.out.println("게시글 내용 > ");
-				input = sc.nextLine();
-				db.update(board); // 내용
-				System.out.println("게시글 번호 > ");
-				input = sc.nextLine();
-				db.update(board); // 게시글 번호
-				db.updateSelect(board);
+				String content = sc.nextLine(); // 내용 작성
+				
+				db.update(title, content, boardNo); // 수정한 게시판 번호
 			} else {
 				System.out.println("종료합니다.");
 				break;
