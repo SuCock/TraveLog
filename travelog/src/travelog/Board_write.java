@@ -1,38 +1,42 @@
 package travelog;
 
+import java.util.Scanner;
+
 public class Board_write {
-	private String board_category;
-	private String board_writer;
-	private String board_date;
-	private String board_title;
-	private String board_content;
+	
+public static void main(String[] args) {
+		
+		DB db = new DB();
+		try (Scanner scan = new Scanner(System.in)) {
+			while(true) {
+				System.out.println("1. 게시물등록");
+				System.out.println("2. 게시물목록");
+				System.out.println("3. 종료");
+				System.out.println("번호 입력하세요");
+				
+				String input = scan.nextLine();
+				
+				if (input.equals("1")) {
+					System.out.print("카테고리: ");
+					String board_category = scan.nextLine();
+					System.out.print("작성자: ");
+					String board_writer = scan.nextLine();
+				    System.out.print("제목: ");
+				    String board_title = scan.nextLine();
+				    System.out.print("내용: ");
+				    String board_contents = scan.nextLine();
+				    db.insert(board_category, board_writer, board_title, board_contents);
+				}
 
-	public Board_write(String board_category, String board_writer, String board_date, String board_title, String board_content) {
-		this.board_category = board_category;
-		this.board_writer = board_writer;
-		this.board_date = board_date;
-		this.board_title = board_title;
-		this.board_content = board_content;
+				else if(input.equals("2")) {
+					db.select();
+				}
+				else {
+					System.out.println("종료합니다.");
+					break;
+				}
+			}
+		}
+		
 	}
-
-	public String getboard_category() {
-		return board_category;
-	}
-
-	public String getboard_writer() {
-		return board_writer;
-	}
-
-	public String getboard_date() {
-		return board_date;
-	}
-
-	public String getTitle() {
-		return board_title;
-	}
-
-	public String getContent() {
-		return board_content;
-	}
-
 }
