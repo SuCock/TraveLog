@@ -252,7 +252,65 @@ public class DB {
 	// end 현욱
 	
 	// 상의
+	   public static void main(String[] args) {
+
+	        try {
+	        	Connection connection = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
+	            // 게시글 상세 조회할 때의 SQL 쿼리
+	            String sql = "SELECT * FROM posts WHERE board_no = ?";
+
+	            // PreparedStatement를 사용하여 SQL 쿼리 준비
+	            try {
+	            	PreparedStatement preparedStatement = connection.prepareStatement(sql); 
+	                // WHERE 절에 설정할 게시글 번호 값
+	                int board_no = 1; // 여기에 실제 게시글 번호 값을 입력하세요
+
+	                // PreparedStatement에 조건 값 설정
+	                preparedStatement.setInt(1, board_no);
+
+	                // SQL 쿼리 실행 및 결과 조회
+	                try {
+	                	ResultSet rs = preparedStatement.executeQuery(); {
+	                
+	                    // 결과가 있는 경우 처리
+	                    if (rs.next()) {
+	                        // 조회된 각 열의 값을 가져와 사용할 수 있습니다.
+	                        int no = rs.getInt("board_no");
+	                        String title = rs.getString("board_title");
+	                        String writer = rs.getString("board_writer");
+	                        String date = rs.getString("board_date");
+	                        String contents = rs.getString("board_contents");
+
+	                        // 가져온 값을 사용하여 원하는 작업 수행
+	                        System.out.println("게시글 번호: " + "board_no");
+	                        System.out.println("게시글 제목: " + "board_title");
+	                        System.out.println("게시글 작성자: " + "board_writer");
+	                        System.out.println("게시글 날짜: " + "board_date");
+	                        System.out.println("게시글 내용: " + "board_contents");
+	                    } else {
+	                        System.out.println("조회된 결과가 없습니다.");
+	                    
+	                        {
+	                        	{	
+	       {
+	                    }catch (Exception e) {
+	            e.printStackTrace();
+	                	
+	                }
+	            }
+	                    }
+	                	   
+	                    
+	            
+	        
 	
+
+	   
+	    
+	        
+	        
+	    
+		
 	
 	
 	
@@ -329,4 +387,4 @@ public class DB {
 	
 	
 	// end 상의
-}
+
