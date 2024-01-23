@@ -7,7 +7,7 @@ public class Listpage {
 		Scanner scan = new Scanner(System.in);
 		DB db = new DB();
 		
-		db.listSelect(); // 게시글목록
+//		db.listSelect(); // 게시글목록
 		
 		while(true) {
 			System.out.println("메뉴를 선택하세요:");
@@ -36,9 +36,11 @@ public class Listpage {
                 db.cateSelect(cate);
                 break;
             case 2:
+            	BoardUpdate.main(args);
             	// 게시글 선택
             	break;
 			case 3:
+				Board_write.main(args);
 	            // 게시글등록
 	            break;
 	        case 4:
