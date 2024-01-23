@@ -28,15 +28,16 @@ public class DB {
 		}
 	}
 
-	public void update(String title, String content, int boardNo ) { // 수정문
+	public void update(String title, String content, String category, int boardNo ) { // 수정문
 		// 예외 처리
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 
-			PreparedStatement pstmt = con.prepareStatement("UPDATE board SET board_title = ?, board_contents = ? WHERE board_no = ?");
+			PreparedStatement pstmt = con.prepareStatement("UPDATE board SET board_title = ?, board_contents = ?, board_category = ? WHERE board_no = ?");
 			pstmt.setString(1, title); // 게시판 제목 
 			pstmt.setString(2, content); // 게시판 내용
-			pstmt.setInt(3, boardNo); // 게시판 번호
+			pstmt.setString(3, category); // 카테고리
+			pstmt.setInt(4, boardNo); // 게시판 번호
 			
 			int result = pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
 			
