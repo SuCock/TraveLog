@@ -46,6 +46,7 @@ public class Listpage {
 	        case 4:
 	        	// 메인화면이동
 	            System.out.println("메인 화면으로 이동합니다.");
+	            ConsoleBoard.main(args);
 	            return;  // 프로그램 종료
 	        default:
 	            System.out.println("올바른 메뉴를 선택하세요.");
