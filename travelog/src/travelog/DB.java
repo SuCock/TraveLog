@@ -28,76 +28,34 @@ public class DB {
 		}
 	}
 
-	public void update(String title, String content, String category, int boardNo ) { // 수정문
+	public void update(String title, String content, String category, int boardNo) { // 수정문
 		// 예외 처리
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 
-			PreparedStatement pstmt = con.prepareStatement("UPDATE board SET board_title = ?, board_contents = ?, board_category = ? WHERE board_no = ?");
-			pstmt.setString(1, title); // 게시판 제목 
+			PreparedStatement pstmt = con.prepareStatement(
+					"UPDATE board SET board_title = ?, board_contents = ?, board_category = ? WHERE board_no = ?");
+			pstmt.setString(1, title); // 게시판 제목
 			pstmt.setString(2, content); // 게시판 내용
 			pstmt.setString(3, category); // 카테고리
 			pstmt.setInt(4, boardNo); // 게시판 번호
-			
+
 			int result = pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
-			
-			if(result > 0 ) {
+
+			if (result > 0) {
 				System.out.println("수정완료");
-				
+
 			} else {
 				System.err.println("수정실패");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	// end 수민
-	
+
 	// 찬우
 //	public void insert01(String board_category) {
 //		// 예외 처리
@@ -113,16 +71,14 @@ public class DB {
 //		} catch (Exception e) {
 //		}
 //	}
-	public void insert(String board_category, String board_writer,String board_title, String board_contents) {
+	public void insert(String board_category, String board_writer, String board_title, String board_contents) {
 		System.out.println("게시물이 등록되었습니다");
 		// 예외 처리
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 
-			PreparedStatement pstmt = con.prepareStatement("INSERT INTO board" + 
-														"(`board_category`,`board_writer`,`board_title`,`board_contents`)"+ 
-														"VALUES " + 
-														"(?,?,?,?)");
+			PreparedStatement pstmt = con.prepareStatement("INSERT INTO board"
+					+ "(`board_category`,`board_writer`,`board_title`,`board_contents`)" + "VALUES " + "(?,?,?,?)");
 			pstmt.setString(1, board_category); // 첫번째 ?에 넣어준다.
 			pstmt.setString(2, board_writer); // 두번째 ?에 넣어준다.
 			pstmt.setString(3, board_title); // n번째 ?에 넣어준다.
@@ -133,75 +89,31 @@ public class DB {
 		} catch (Exception e) {
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	// end 찬우
-	
+
 	// 현욱
 	public void listSelect() {
 		System.out.println("DB조회");
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
-			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM board"); 
+			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM board");
 			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				System.out.print("[게시판번호:" + rs.getInt("board_no") + "] ");
 				System.out.print("카테고리:" + rs.getString("board_category") + " ");
 				System.out.print("작성자:" + rs.getString("board_writer") + " ");
 				System.out.print("제목:" + rs.getString("board_title") + " ");
 				System.out.println();
 			}
-			System.out.println("조회완료");      
-		}catch (Exception e) {
+			System.out.println("조회완료");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-	
+
 	public void cateSelect(String cate) {
 		System.out.println("CATEGORY SELECT 조회");
 		try {
@@ -227,93 +139,35 @@ public class DB {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	// end 현욱
-	
+
 	// 상의
-	   public static void main(String[] args) {
+	public void detailSelect(int board_no){
 
-	        try {
-	        	Connection connection = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
-	            // 게시글 상세 조회할 때의 SQL 쿼리
-	            String sql = "SELECT * FROM posts WHERE board_no = ?";
-
-	            // PreparedStatement를 사용하여 SQL 쿼리 준비
-	            try {
-	            	PreparedStatement preparedStatement = connection.prepareStatement(sql); 
-	                // WHERE 절에 설정할 게시글 번호 값
-	                int board_no = 1; // 여기에 실제 게시글 번호 값을 입력하세요
-
-	                // PreparedStatement에 조건 값 설정
-	                preparedStatement.setInt(1, board_no);
-
-	                // SQL 쿼리 실행 및 결과 조회
-	                try {
-	                	ResultSet rs = preparedStatement.executeQuery(); {
-	                
-	                    // 결과가 있는 경우 처리
-	                    if (rs.next()) {
-	                        // 조회된 각 열의 값을 가져와 사용할 수 있습니다.
-	                        int no = rs.getInt("board_no");
-	                        String title = rs.getString("board_title");
-	                        String writer = rs.getString("board_writer");
-	                        String date = rs.getString("board_date");
-	                        String contents = rs.getString("board_contents");
-
-	                        // 가져온 값을 사용하여 원하는 작업 수행
-	                        System.out.println("게시글 번호: " + "board_no");
-	                        System.out.println("게시글 제목: " + "board_title");
-	                        System.out.println("게시글 작성자: " + "board_writer");
-	                        System.out.println("게시글 날짜: " + "board_date");
-	                        System.out.println("게시글 내용: " + "board_contents");
-	                    } else {
-	                        System.out.println("조회된 결과가 없습니다.");
-	                    
-	                        {
-	                        	{	
-	       {
-	                    }catch (Exception e) {
-	            e.printStackTrace();
-	                	
-	                }
-	            }
-	                    }
+		try {
+			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
+			PreparedStatement pstmt = con.prepareStatement ("SELECT board_title, board_writer, board_date, board_contents FROM board WHERE board_no = ?");
+			// 조회할 조건의 게시판 번호를 가져와야한다.
+			pstmt.setInt(1, board_no);
+			ResultSet rs = pstmt.executeQuery();
+				// 결과가 있는 경우 처리
+				if (rs.next()) {
+					// 가져온 값을 사용하여 원하는 작업 수행
+					System.out.println("게시글 번호: " + rs.getInt(board_no));
+					System.out.println("게시글 제목: " + rs.getString("board_title"));
+					System.out.println("게시글 작성자: " + rs.getString("board_writer"));
+					System.out.println("게시글 날짜: " + rs.getString("board_date"));
+					System.out.println("게시글 내용: " + rs.getString("board_contents"));
+				} else {
+					System.out.println("조회된 결과가 없습니다.");
+					}
+			}catch (Exception e) {
+			e.printStackTrace();
+					
+			}
+	}
+}
 	                	   
 	                    
 	            
@@ -402,4 +256,3 @@ public class DB {
 	
 	
 	// end 상의
-
