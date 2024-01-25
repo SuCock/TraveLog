@@ -57,20 +57,6 @@ public class DB {
 	// end 수민
 
 	// 찬우
-//	public void insert01(String board_category) {
-//		// 예외 처리
-//		try {
-//			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
-//
-//			PreparedStatement pstmt = con.prepareStatement("INSERT INTO board" + 
-//														"(`board_category`)"+ 
-//														"VALUES " + 
-//														"(?)");
-//			pstmt.setString(1, board_category); // 첫번째 ?에 넣어준다.
-//			pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
-//		} catch (Exception e) {
-//		}
-//	}
 	public void insert(String board_category, String board_writer, String board_title, String board_contents) {
 		System.out.println("게시물이 등록되었습니다");
 		// 예외 처리
@@ -83,10 +69,9 @@ public class DB {
 			pstmt.setString(2, board_writer); // 두번째 ?에 넣어준다.
 			pstmt.setString(3, board_title); // n번째 ?에 넣어준다.
 			pstmt.setString(4, board_contents); // n번째 ?에 넣어준다.
-//			pstmt.setString(5, board); // n번째 ?에 넣어준다.
-
 			pstmt.executeUpdate(); // 입력한 퀴리문을 업데이트 해준다.
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
