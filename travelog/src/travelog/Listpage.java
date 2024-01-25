@@ -36,7 +36,11 @@ public class Listpage {
                 db.cateSelect(cate);
                 break;
             case 2:
-            	BoardUpdate.main(args);
+            	System.out.println("삭제할 게시글 번호를 입력해주세요.");
+            	int board_no;
+            	board_no = scan.nextInt();
+            	db.delete(board_no);
+//            	BoardUpdate.main(args);
             	// 게시글 선택
             	break;
 			case 3:
