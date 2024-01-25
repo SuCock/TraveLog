@@ -24,6 +24,7 @@ public class Listpage {
             	boolean check = false;
                 String cate;
                 do {
+                	
                     System.out.println("카테고리를 입력해주세요.");
                     System.out.println("경상도 충청도 전라도 강원도 경기도");
                     cate = scan.nextLine();
@@ -57,7 +58,7 @@ public class Listpage {
             }
 		}
 	}
-	private static boolean isValidCategory(String category) {
+	public static boolean isValidCategory(String category) {
 		// 유효한 카테고리인지 확인하는 메서드
 		return category.equals("경상도") || category.equals("충청도") || category.equals("전라도")
 				|| category.equals("강원도") || category.equals("경기도");
