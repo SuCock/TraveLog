@@ -139,7 +139,33 @@ public class DB {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void delete(int board_no) {
+		System.out.println("DELETE");
+		try {
+			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
+			PreparedStatement pstmt = con.prepareStatement("DELETE FROM board\r\n" + "WHERE board_no = ?;");
+			pstmt.setInt(1, board_no);
+			pstmt.executeUpdate();
+//			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
+//			
+//			if (!rs.isBeforeFirst()) {
+//		        // rs.isBeforeFirst() 결과 집합에 데이터가 있는지 여부를 확인
+//		        System.out.println("조회되는 내용이 없습니다. 카테고리를 다시 입력 해주세요");
+//		    } else {
+//				while(rs.next()) {
+//					System.out.print("[게시판번호:" + rs.getInt("board_no") + "] ");
+//					System.out.print("카테고리:" + rs.getString("board_category") + " ");
+//					System.out.print("작성자:" + rs.getString("board_writer") + " ");
+//					System.out.print("제목:" + rs.getString("board_title") + " ");
+//					System.out.println();
+//				}
+//		    }
+			System.out.println("조회완료");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	// end 현욱
 
 	// 상의
