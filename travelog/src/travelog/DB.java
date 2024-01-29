@@ -15,6 +15,7 @@ public class DB {
 					+ " WHERE board_no = ?");
 			pstmt.setInt(1, board); // 첫번째 ?에 넣어준다. -> 조건을 먼저 넣고 실행해야한다.
 			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
+			
 			if (rs.next()) { // 데이터가 있는 경우에만 진행
 				System.out.println("╔══════" + rs.getString("board_title") + "═╗");
 				System.out.println("║    " + rs.getString("board_category") + "║");
