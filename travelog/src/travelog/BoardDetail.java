@@ -6,6 +6,7 @@ public class BoardDetail {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		DB db = new DB();				
+		int board_no;
 		while(true) {
 			System.out.println("게시물을 선택하세요.");
 			System.out.println("게시물 번호 입력 > (1.경상도 2.충청도 3.전라도 4.강원도 5.경기도");
@@ -16,18 +17,13 @@ public class BoardDetail {
 	        switch(choice) {
             case 1:
                 boolean check = false;
-                String B_n;
                 do {
                     System.out.println("게시물 번호를 입력하세요");
                     System.out.println("1.경상도 2.충청도 3.전라도 4.강원도 5.경기도");
-                    B_n = sc.nextLine();
-                    if (isValidBoard_no(B_n)) {
-                        check = true;
-                    } else {
-                        System.out.println("번호를 다시 입력하세요.");
-                    }
+                    board_no = sc.nextInt();
+                    
                 } while (!check); // false 가 되면 종료 - true 이면 계속 실행
-                db.detailSelect(B_n);
+                db.detailSelect(board_no);
                 break;
             case 2:
                 BoardUpdate.main(args);
@@ -45,18 +41,15 @@ public class BoardDetail {
                 System.out.println("알맞은 번호를 입력하세요.");
         }
     }
-}
 
-	private static boolean isValidBoard_no(String Board_no) {
-		// 유효한 게시물 번호인지 확인하는 메서드
-		return Board_no.equals("1.경상도") || Board_no.equals("2.충청도") || Board_no.equals("3.전라도") || Board_no.equals("4.강원도")
-				|| Board_no.equals("5.경기도");
 
-		Scanner sc = new Scanner(System.in);
+
+
+		
 
 		while (true) {
 			int boardNo = 1; // 게시물 내용 출력할 수 있게 하는 메서드
-			db.updateSelect(Board_no); // 단건조회
+			db.updateSelect(board_no); // 단건조회
 			System.out.println("1. 게시물 수정");
 			System.out.println("2. 게시물 삭제");
 			System.out.println("3. 메인페이지로 이동");
