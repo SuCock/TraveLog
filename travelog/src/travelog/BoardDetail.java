@@ -8,31 +8,16 @@ public class BoardDetail {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD
 		DB db = new DB();
-=======
-				
->>>>>>> f574d0f171fe56f92bbea6014d9da63180f1d70a
+
 		int board_no;
 		while (true) {
-			System.out.println("게시물을 선택하세요.");
-			System.out.println("게시물 번호 입력 > (1.경상도 2.충청도 3.전라도 4.강원도 5.경기도");
-
-			int choice = sc.nextInt();
-<<<<<<< HEAD
-			sc.nextLine();
+			System.out.println("게시물 번호를 입력하세요");
 
 			switch (choice) {
 			case 1:
-				boolean check = false;
-				do {
-					System.out.println("게시물 번호를 입력하세요");
-					System.out.println("1.경상도 2.충청도 3.전라도 4.강원도 5.경기도");
-					board_no = sc.nextInt();
-
-				} while (!check); // false 가 되면 종료 - true 이면 계속 실행
-				db.detailSelect(board_no);
-				break;
+				BoardUpdate.main(args);
+					
 			case 2:
 				BoardUpdate.main(args);
 				// 게시글 수정
