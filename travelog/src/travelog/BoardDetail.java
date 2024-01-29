@@ -42,7 +42,12 @@ public class BoardDetail {
         }
     }
 
-
+	private static boolean isValidBoard_no(String Board_no) {
+		// 유효한 게시물 번호인지 확인하는 메서드
+		return Board_no.equals("1.경상도") || Board_no.equals("2.충청도") || Board_no.equals("3.전라도") || Board_no.equals("4.강원도")
+				|| Board_no.equals("5.경기도");
+ 
+		Scanner sc = new Scanner(System.in);
 
 		while (true) {
 			int boardNo = 1; // 게시물 내용 출력할 수 있게 하는 메서드
