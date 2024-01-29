@@ -19,7 +19,6 @@ public class Main {
 				case 1:
 					System.out.print("제목 : ");
 					String board_title = scan.nextLine();
-					db.insert(board_title);
 			
 			 }
    }
