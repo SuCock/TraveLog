@@ -12,8 +12,6 @@ public class BoardDetail {
 		int board_choice = sc.nextInt();
 		sc.nextLine();
 		db.detailSelect(board_choice);
-		System.out.println();
-		System.out.println("1. 게시물 수정, 2. 게시물 삭제, 3.메인화면으로 이동");
 		int choice = sc.nextInt();
 		sc.nextLine();
 		switch (choice) {
@@ -29,6 +27,9 @@ public class BoardDetail {
 			return;
 		default:
 			System.out.println("알맞은 번호를 입력하세요.");
+			
+			System.out.println();
+			System.out.println("1. 게시물 수정, 2. 게시물 삭제, 3.메인화면으로 이동");
 		}
 	}
 }

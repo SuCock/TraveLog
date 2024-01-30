@@ -172,7 +172,7 @@ public class DB {
 					System.out.println("게시글 날짜: " + rs.getString("board_date"));
 					System.out.println("게시글 내용: " + rs.getString("board_contents"));
 				} else {
-					System.out.println("조회된 결과가 없습니다.");
+					System.out.println("조회된 결과가 없습니다. 번호를 다시 입력해주세요");
 					}
 			}catch (Exception e) {
 			e.printStackTrace();
