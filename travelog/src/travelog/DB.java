@@ -154,8 +154,8 @@ public class DB {
 	// end 현욱
 
 	// 상의
-	public void detailSelect(int board_no){
-
+	public int detailSelect(){
+			
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 //			PreparedStatement pstmt = con.prepareStatement ("SELECT board_title, board_writer, board_date, board_contents FROM board WHERE board_no ="+board_no);
@@ -171,6 +171,7 @@ public class DB {
 					System.out.println("게시글 작성자: " + rs.getString("board_writer"));
 					System.out.println("게시글 날짜: " + rs.getString("board_date"));
 					System.out.println("게시글 내용: " + rs.getString("board_contents"));
+				
 				} else {
 					System.out.println("조회된 결과가 없습니다. 번호를 다시 입력해주세요");
 					}
@@ -178,6 +179,7 @@ public class DB {
 			e.printStackTrace();
 					
 			}
+		
 	}
 
 
