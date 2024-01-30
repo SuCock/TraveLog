@@ -13,7 +13,7 @@ public class BoardDetail {
 		sc.nextLine();
         db.detailSelect(choice);
         System.out.println();
-        System.out.println("게시물 수정,  게시물 삭제, 메인화면으로 이동");
+        System.out.println("1. 게시물 수정, 2. 게시물 삭제, 3.메인화면으로 이동");
 
 	}
 }
