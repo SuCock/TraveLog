@@ -154,7 +154,7 @@ public class DB {
 	// end 현욱
 
 	// 상의
-	public int detailSelect(){
+	public void detailSelect(int board_no){
 			
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
