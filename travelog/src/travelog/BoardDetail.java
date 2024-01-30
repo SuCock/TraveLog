@@ -11,16 +11,19 @@ public class BoardDetail {
 		
 		int choice = sc.nextInt();
         sc.nextLine();
+        db.detailSelect(choice);
+        
+        System.out.println("게시물 수정,  게시물 삭제, 메인화면으로 이동");
 
 		switch (choice) {
 		case 1:
-			BoardUpdate.main(args);
+			BoardUpdate.main(args);//수정
 			break;
 		case 2:
-			db.delete(choice);		
+			db.delete(choice);//삭제		
 			break;
 		case 3:
-			System.out.println("메인화면으로 돌아갑니다.");
+			System.out.println("메인화면으로 돌아갑니다.");//메인화면으로 이동
 			BoardDetail.main(args);
 			return;
 		default:
