@@ -15,7 +15,6 @@ public class DB {
 					+ " WHERE board_no = ?");
 			pstmt.setInt(1, board); // 첫번째 ?에 넣어준다. -> 조건을 먼저 넣고 실행해야한다.
 			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
-			
 			if (rs.next()) { // 데이터가 있는 경우에만 진행
 				System.out.println("╔══════" + rs.getString("board_title") + "═╗");
 				System.out.println("║    " + rs.getString("board_category") + "║");
@@ -133,6 +132,20 @@ public class DB {
 			PreparedStatement pstmt = con.prepareStatement("DELETE FROM board\r\n" + "WHERE board_no = ?;");
 			pstmt.setInt(1, board_no);
 			pstmt.executeUpdate();
+//			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
+//			
+//			if (!rs.isBeforeFirst()) {
+//		        // rs.isBeforeFirst() 결과 집합에 데이터가 있는지 여부를 확인
+//		        System.out.println("조회되는 내용이 없습니다. 카테고리를 다시 입력 해주세요");
+//		    } else {
+//				while(rs.next()) {
+//					System.out.print("[게시판번호:" + rs.getInt("board_no") + "] ");
+//					System.out.print("카테고리:" + rs.getString("board_category") + " ");
+//					System.out.print("작성자:" + rs.getString("board_writer") + " ");
+//					System.out.print("제목:" + rs.getString("board_title") + " ");
+//					System.out.println();
+//				}
+//		    }
 			System.out.println("조회완료");
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -165,6 +178,9 @@ public class DB {
 					
 			}
 	}
+
+
+
 }
 	                	   
 	                    
