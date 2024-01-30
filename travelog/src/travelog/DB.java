@@ -13,6 +13,7 @@ public class DB {
 			PreparedStatement pstmt = con.prepareStatement("SELECT board_category\r\n" + "	 , board_writer\r\n"
 					+ "	 , board_date\r\n" + "	 , board_title\r\n" + "	 , board_contents\r\n" + "  FROM board\r\n"
 					+ " WHERE board_no = ?");
+			System.out.println("111");
 			pstmt.setInt(1, board); // 첫번째 ?에 넣어준다. -> 조건을 먼저 넣고 실행해야한다.
 			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
 			if (rs.next()) { // 데이터가 있는 경우에만 진행
@@ -158,14 +159,15 @@ public class DB {
 
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
-			PreparedStatement pstmt = con.prepareStatement ("SELECT board_title, board_writer, board_date, board_contents FROM board WHERE board_no = ?");
+//			PreparedStatement pstmt = con.prepareStatement ("SELECT board_title, board_writer, board_date, board_contents FROM board WHERE board_no ="+board_no);
+			PreparedStatement pstmt = con.prepareStatement ("select * from board where board_no="+board_no);
 			// 조회할 조건의 게시판 번호를 가져와야한다.
-			pstmt.setInt(1, board_no);
+//			pstmt.setInt(1, board_no);
 			ResultSet rs = pstmt.executeQuery();
 				// 결과가 있는 경우 처리
 				if (rs.next()) {
 					// 가져온 값을 사용하여 원하는 작업 수행
-					System.out.println("게시글 번호: " + rs.getInt(board_no));
+					System.out.println("게시글 번호: " + rs.getInt("board_no"));
 					System.out.println("게시글 제목: " + rs.getString("board_title"));
 					System.out.println("게시글 작성자: " + rs.getString("board_writer"));
 					System.out.println("게시글 날짜: " + rs.getString("board_date"));
