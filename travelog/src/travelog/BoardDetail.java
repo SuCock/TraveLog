@@ -24,7 +24,7 @@ public class BoardDetail {
 					break;
 				case "2":
 					db.delete(choice);
-					Listpage.main(args);
+					ConsoleBoard.main(args);
 					break;
 				case "3":
 					BoardDetail.main(args);;

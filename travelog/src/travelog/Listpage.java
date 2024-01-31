@@ -42,6 +42,7 @@ public class Listpage {
             	break;
 			case 3:
 				Board_write.main(args);
+				ConsoleBoard.main(args);
 	            // 게시글등록
 	            break;
 	        case 4:
