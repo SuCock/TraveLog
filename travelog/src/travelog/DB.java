@@ -174,12 +174,12 @@ public class DB {
 				
 				} else {
 					System.out.println("조회된 결과가 없습니다. 번호를 다시 입력해주세요");
-					}
+					BoardDetail.main(null);
+				}
 			}catch (Exception e) {
 			e.printStackTrace();
 					
 			}
-		
 	}
 
 
