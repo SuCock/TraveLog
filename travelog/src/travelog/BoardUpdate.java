@@ -6,16 +6,13 @@ public class BoardUpdate {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		DB db = new DB();
+		int boardNo = 0; // 단건조회에서 가져올 데이터(수정할 게시판 번호)
+		
 
 		while (true) {
-			int boardNo = 1; // 단건조회에서 가져올 데이터(수정할 게시판 번호)
-			db.updateSelect(boardNo); // 단건조회
-			System.out.println("1. 게시글 수정");
-			System.out.println("2. 종료");
-			System.out.println("번호 입력하세요 > ");
-
-			String number = sc.nextLine();
-			if (number.equals("1")) {
+			boardNo = db.detailSelect(boardNo);
+			int number = sc.nextInt();
+			if (number == 1) {
 				System.out.println("게시글 카테고리 > ");
 				String category = sc.nextLine(); // 카테고리
 				System.out.println("게시글 제목 > ");
