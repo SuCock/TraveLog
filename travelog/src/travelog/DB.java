@@ -13,7 +13,6 @@ public class DB {
 			PreparedStatement pstmt = con.prepareStatement("SELECT board_category\r\n" + "	 , board_writer\r\n"
 					+ "	 , board_date\r\n" + "	 , board_title\r\n" + "	 , board_contents\r\n" + "  FROM board\r\n"
 					+ " WHERE board_no = ?");
-			System.out.println("111");
 			pstmt.setInt(1, board); // 첫번째 ?에 넣어준다. -> 조건을 먼저 넣고 실행해야한다.
 			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
 			if (rs.next()) { // 데이터가 있는 경우에만 진행
@@ -156,7 +155,7 @@ public class DB {
 
 	// 상의
 	public void detailSelect(int board_no){
-
+			
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 //			PreparedStatement pstmt = con.prepareStatement ("SELECT board_title, board_writer, board_date, board_contents FROM board WHERE board_no ="+board_no);
@@ -172,9 +171,11 @@ public class DB {
 					System.out.println("게시글 작성자: " + rs.getString("board_writer"));
 					System.out.println("게시글 날짜: " + rs.getString("board_date"));
 					System.out.println("게시글 내용: " + rs.getString("board_contents"));
+				
 				} else {
-					System.out.println("조회된 결과가 없습니다.");
-					}
+					System.out.println("조회된 결과가 없습니다. 번호를 다시 입력해주세요");
+					BoardDetail.main(null);
+				}
 			}catch (Exception e) {
 			e.printStackTrace();
 					
