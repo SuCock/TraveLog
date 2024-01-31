@@ -3,51 +3,6 @@ package travelog;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//class Post {
-//	private String title;
-//	private String content;
-//
-//	public Post(String title, String content) {
-//		this.title = title;
-//		this.content = content;
-//	}
-//
-//	public String getTitle() {
-//		return title;
-//	}
-//
-//	public String getContent() {
-//		return content;
-//	}
-//}
-//
-//class Board {
-//	private ArrayList<Post> posts;
-//
-//	public Board() {
-//		this.posts = new ArrayList<>();
-//	}
-//
-//	public void writePost(String title, String content) {
-//		Post post = new Post(title, content);
-//		posts.add(post);
-//		System.out.println("게시글이 등록되었습니다.");
-//	}
-//
-//	public void viewPosts() {
-//		if (posts.isEmpty()) {
-//			System.out.println("게시글이 없습니다.");
-//		} else {
-//			System.out.println("===== 게시글 목록 =====");
-//			for (int i = 0; i < posts.size(); i++) {
-//				Post post = posts.get(i);
-//				System.out.println("[" + (i + 1) + "] " + post.getTitle());
-//			}
-//			System.out.println("=====================");
-//		}
-//	} 
-//}
-
 public class ConsoleBoard {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -74,8 +29,7 @@ public class ConsoleBoard {
 				Listpage.main(args);
 				break;
 			case 2:
-				BoardUpdate.main(args);
-//				board.viewPosts();
+				BoardDetail.main(args);
 				break;
 			case 3:
 				Board_write.main(args);

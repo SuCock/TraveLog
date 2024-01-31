@@ -79,7 +79,6 @@ public class DB {
 
 	// 현욱
 	public void listSelect() {
-		System.out.println("DB조회");
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM board");
@@ -92,7 +91,6 @@ public class DB {
 				System.out.print("제목:" + rs.getString("board_title") + " ");
 				System.out.println();
 			}
-			System.out.println("조회완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -100,7 +98,6 @@ public class DB {
 	}
 
 	public void cateSelect(String cate) {
-		System.out.println("CATEGORY SELECT 조회");
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 			PreparedStatement pstmt = con.prepareStatement("SELECT * FROM board WHERE board_category = ?");
@@ -119,34 +116,18 @@ public class DB {
 					System.out.println();
 				}
 		    }
-			System.out.println("조회완료");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void delete(int board_no) {
-		System.out.println("DELETE");
+		System.out.println("삭제완료");
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
 			PreparedStatement pstmt = con.prepareStatement("DELETE FROM board\r\n" + "WHERE board_no = ?;");
 			pstmt.setInt(1, board_no);
 			pstmt.executeUpdate();
-//			ResultSet rs = pstmt.executeQuery(); // 반환값을 넣을곳이 필요하다.
-//			
-//			if (!rs.isBeforeFirst()) {
-//		        // rs.isBeforeFirst() 결과 집합에 데이터가 있는지 여부를 확인
-//		        System.out.println("조회되는 내용이 없습니다. 카테고리를 다시 입력 해주세요");
-//		    } else {
-//				while(rs.next()) {
-//					System.out.print("[게시판번호:" + rs.getInt("board_no") + "] ");
-//					System.out.print("카테고리:" + rs.getString("board_category") + " ");
-//					System.out.print("작성자:" + rs.getString("board_writer") + " ");
-//					System.out.print("제목:" + rs.getString("board_title") + " ");
-//					System.out.println();
-//				}
-//		    }
-			System.out.println("조회완료");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -158,10 +139,8 @@ public class DB {
 			
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
-//			PreparedStatement pstmt = con.prepareStatement ("SELECT board_title, board_writer, board_date, board_contents FROM board WHERE board_no ="+board_no);
 			PreparedStatement pstmt = con.prepareStatement ("select * from board where board_no="+board_no);
 			// 조회할 조건의 게시판 번호를 가져와야한다.
-//			pstmt.setInt(1, board_no);
 			ResultSet rs = pstmt.executeQuery();
 				// 결과가 있는 경우 처리
 				if (rs.next()) {
