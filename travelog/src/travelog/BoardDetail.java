@@ -16,7 +16,7 @@ public class BoardDetail {
 			boolean bo = true;
 
 			while (bo) {
-				System.out.println("1. 게시물 수정, 2. 게시물 삭제 3. 메인으로 이동");
+				System.out.println("1. 게시물 수정, 2. 게시물 삭제 3. 뒤로가기");
 				String BD = sc.nextLine();
 				switch (BD) {
 				case "1":
