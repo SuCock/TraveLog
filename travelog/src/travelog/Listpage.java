@@ -24,15 +24,15 @@ public class Listpage {
             	boolean check = false;
                 String cate;
                 do {
-        
                     System.out.println("카테고리를 입력해주세요.");
                     System.out.println("경상도 충청도 전라도 강원도 경기도");
                     cate = scan.nextLine();
                     if (isValidCategory(cate)) {
-                        check = true;
-                    } 
+                        db.cateSelect(cate);
+                    } else {
+                    	System.out.println("다시입력해주세요");
+                    }
                 } while (!check); // false 가 되면 종료 - true면 계속 실행
-                db.cateSelect(cate);
                 break;
             case 2:
             	// 게시글 선택
