@@ -9,8 +9,6 @@ public class ConsoleBoard {
 		DB db = new DB();
 		
 		while (true) {
-			System.out.println("===== Travelog =====");
-			System.out.println();
 			db.listSelect();
 			
 			System.out.println();
