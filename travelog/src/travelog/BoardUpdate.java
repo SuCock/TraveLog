@@ -3,14 +3,12 @@ package travelog;
 import java.util.Scanner;
 
 public class BoardUpdate {
-	public static void main(String[] args) {
+	public static void main(String[] args, int boardNo) {
 		Scanner sc = new Scanner(System.in);
 		DB db = new DB();
-		int boardNo = 0; // 단건조회에서 가져올 데이터(수정할 게시판 번호)
-		
 
 		while (true) {
-			boardNo = db.detailSelect(boardNo);
+//			boardNo = db.detailSelect(boardNo);
 			int number = sc.nextInt();
 			if (number == 1) {
 				System.out.println("게시글 카테고리 > ");

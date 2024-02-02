@@ -21,6 +21,7 @@ public class Listpage {
 
             switch(choice) {
             case 1:
+
             	String cate;
                 
             	System.out.println("카테고리를 입력해주세요.");
@@ -46,6 +47,7 @@ public class Listpage {
                     	cate = scan.nextLine();
                     }
                 }
+
                 break;
             case 2:
             	// 게시글 선택
