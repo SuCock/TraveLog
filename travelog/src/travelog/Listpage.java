@@ -21,18 +21,33 @@ public class Listpage {
 
             switch(choice) {
             case 1:
-            	boolean check = false;
-                String cate;
-                do {
-                    System.out.println("카테고리를 입력해주세요.");
-                    System.out.println("경상도 충청도 전라도 강원도 경기도");
-                    cate = scan.nextLine();
-                    if (isValidCategory(cate)) {
-                        check = db.cateSelect(cate);
+
+            	String cate;
+                
+            	System.out.println("카테고리를 입력해주세요.");
+            	System.out.println("경상도 경기도 충청도 강원도 전라도");
+               
+            	cate = scan.nextLine(); // 카테고리 입력 받기
+                
+                boolean check = true;
+                // 카테고리 입력 확인
+                while(check) {
+                	// 카테고리 정확도 확인
+                	if(isValidCategory(cate)) {
+            			if(db.cateSelect(cate)) { // 조회내용 있는 경우
+            				check = false;
+            			} else { //조회내용 없는 경우
+            				System.out.println("조회되는 내용이 없습니다. 카테고리를 다시 입력 해주세요");
+            				System.out.println("경상도 경기도 충청도 강원도 전라도");
+            				cate = scan.nextLine();
+            			}
                     } else {
-                    	System.out.println("다시입력해주세요");
+                    	System.out.println("카테고리를 정확히 다시 입력해주세요.");
+                    	System.out.println("경상도 경기도 충청도 강원도 전라도");
+                    	cate = scan.nextLine();
                     }
-                } while (!check); // false 가 되면 종료 - true면 계속 실행
+                }
+
                 break;
             case 2:
             	// 게시글 선택
