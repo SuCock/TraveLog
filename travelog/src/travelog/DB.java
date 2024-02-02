@@ -107,7 +107,7 @@ public class DB {
 			if (!rs.isBeforeFirst()) {
 		        // rs.isBeforeFirst() 결과 집합에 데이터가 있는지 여부를 확인
 		        System.out.println("조회되는 내용이 없습니다. 카테고리를 다시 입력 해주세요");
-		        
+		        return false;
 		    } else {
 				while(rs.next()) {
 					System.out.print("[게시판번호:" + rs.getInt("board_no") + "] ");
@@ -115,12 +115,14 @@ public class DB {
 					System.out.print("작성자:" + rs.getString("board_writer") + " ");
 					System.out.print("제목:" + rs.getString("board_title") + " ");
 					System.out.println();
+					return true;
 				}
 		    }
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
-		return true;
+		return false;
 
 	}
 	

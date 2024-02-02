@@ -28,7 +28,7 @@ public class Listpage {
                     System.out.println("경상도 충청도 전라도 강원도 경기도");
                     cate = scan.nextLine();
                     if (isValidCategory(cate)) {
-                        db.cateSelect(cate);
+                        check = db.cateSelect(cate);
                     } else {
                     	System.out.println("다시입력해주세요");
                     }
