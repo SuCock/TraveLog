@@ -152,7 +152,8 @@ public class DB {
 				// 결과가 있는 경우 처리
 				if (rs.next()) {
 					// 가져온 값을 사용하여 원하는 작업 수행
-					System.out.println("게시글 번호: " + rs.getInt("board_no"));
+				    System.out.println("게시글 번호: " + rs.getInt("board_no"));
+				    System.out.println("게시글 카테고리: " + rs.getString("board_category"));
 					System.out.println("게시글 제목: " + rs.getString("board_title"));
 					System.out.println("게시글 작성자: " + rs.getString("board_writer"));
 					System.out.println("게시글 날짜: " + rs.getString("board_date"));
