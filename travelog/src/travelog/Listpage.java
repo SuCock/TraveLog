@@ -11,7 +11,7 @@ public class Listpage {
 		
 		while(true) {
 			System.out.println("메뉴를 선택하세요:");
-            System.out.println("1. 게시글 카테고리 입력 > (경상도 경기도 충청도 강원도 경상도)");
+            System.out.println("1. 게시글 카테고리 입력 > (경상도 경기도 충청도 강원도 전라도)");
             System.out.println("2. 게시글 선택");
             System.out.println("3. 게시글 등록");
             System.out.println("4. 메인 화면으로 이동");
