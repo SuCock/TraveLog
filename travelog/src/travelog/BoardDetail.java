@@ -20,6 +20,7 @@ public class BoardDetail {
 			switch (BD) {
 			case "1":
 				BoardUpdate.boardUpdate(choice);
+				db.detailSelect(choice);
 				break;
 			case "2":
 				db.delete(choice);
