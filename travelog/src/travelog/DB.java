@@ -28,7 +28,7 @@ public class DB {
 		}
 	}
 
-	public void update(String title, String content, String category, int boardNo) { // 수정문
+	public void update(String title, String contents, String category, int boardNo) { // 수정문
 		// 예외 처리
 		try {
 			Connection con = DriverManager.getConnection(INFO.JDBC_URL, INFO.USERNAME, INFO.PASSWORD);
@@ -36,7 +36,7 @@ public class DB {
 			PreparedStatement pstmt = con.prepareStatement(
 					"UPDATE board SET board_title = ?, board_contents = ?, board_category = ? WHERE board_no = ?");
 			pstmt.setString(1, title); // 게시판 제목
-			pstmt.setString(2, content); // 게시판 내용
+			pstmt.setString(2, contents); // 게시판 내용
 			pstmt.setString(3, category); // 카테고리
 			pstmt.setInt(4, boardNo); // 게시판 번호
 
