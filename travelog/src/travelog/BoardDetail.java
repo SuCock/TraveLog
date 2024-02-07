@@ -33,6 +33,7 @@ public class BoardDetail {
 			case "0":
 				System.out.println("종료합니다.");
 				bo = false;
+				ConsoleBoard.main(args);
 			default:
 				System.out.println("메뉴를 다시 선택해주세요");
 				continue;
