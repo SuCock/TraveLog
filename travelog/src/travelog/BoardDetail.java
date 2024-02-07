@@ -34,7 +34,7 @@ public class BoardDetail {
 				System.out.println("종료합니다.");
 				bo = false;
 			default:
-				System.out.println("메뉴를 다시 입력해주세요");
+				System.out.println("메뉴를 다시 선택해주세요");
 				continue;
 
 			}
